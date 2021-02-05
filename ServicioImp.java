@@ -1,8 +1,8 @@
 import java.rmi.*;
 import java.rmi.server.*;
 
-class ServicioEcoImpl extends UnicastRemoteObject implements ServicioEco {
-    ServicioEcoImpl() throws RemoteException {
+class ServicioImp extends UnicastRemoteObject implements Servicio {
+    ServicioImp() throws RemoteException {
     }
     public String eco(String s) throws RemoteException {
         return s.toUpperCase();
