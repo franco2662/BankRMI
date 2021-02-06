@@ -1,6 +1,5 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -10,23 +9,23 @@ public class PostgreSQLJDBC {
       String jdbcURL = "jdbc:postgresql://localhost:5432/BankRMI";
          String username = "postgres";
          String password = "1234";
-      System.err.println("hola");
       try {
          //Class.forName("org.postgresql.Driver");
          connection = DriverManager.getConnection(jdbcURL,username,password);
          Statement stmt = null;
          stmt = connection.createStatement();
-        
-         ResultSet rs = stmt.executeQuery( "SELECT * FROM Operation" ); 
+
+         ResultSet rs = stmt.executeQuery(  "SELECT * FROM \"Operation\" " ); 
 
             while (rs.next()) {
-                  System.out.print(rs.getString(1));
+                  System.out.print(rs.getString("name"));
+                  System.out.println("\n");
             }
 
          
       } catch (Exception e) {
          System.out.println(e.getMessage());
-         System.out.println("fallo");
+
       }      
       
       
