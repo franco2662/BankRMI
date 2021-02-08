@@ -1,15 +1,14 @@
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 
 public class Cliente {
-    public static void main(String args[]){
-        
-       System.out.println("hola");
+    private static IServidor servidor = null;
+    public static void main(String args[]) throws Exception {
+       Registry registry = LocateRegistry.getRegistry();
+       servidor = (IServidor) registry.lookup("remoteServidor");
+       System.out.println(servidor.devolverMensaje());
         
     }
 }
